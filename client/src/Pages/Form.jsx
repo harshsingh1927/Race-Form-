@@ -21,7 +21,7 @@ export default function Form() {
     if (photo) data.append('photo', photo)
 
     try {
-      const res = await fetch('/api/registrations', {
+      const res = await fetch('https://race-form.onrender.com/api/registrations', {
         method: 'POST',
         body: data
       })

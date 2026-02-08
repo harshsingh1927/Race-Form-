@@ -9,7 +9,7 @@ export default function Admin() {
 
   const loadLatest = async () => {
     try {
-      const res = await fetch('/api/registrations/latest')
+      const res = await fetch('https://race-form.onrender.com/api/registrations/latest')
       const json = await res.json()
       if (!res.ok) {
         setData(null)
@@ -32,7 +32,7 @@ export default function Admin() {
     if (!data?.photoId) return
     setActionStatus('Deleting...')
     try {
-      const res = await fetch(`/api/registrations/${data.photoId}`, {
+      const res = await fetch(`https://race-form.onrender.com/api/registrations/${data.photoId}`, {
         method: 'DELETE'
       })
       const json = await res.json()
@@ -53,7 +53,7 @@ export default function Admin() {
       <div className='admin-card'>
         <div className='admin-photo'>
           {data?.photoId ? (
-            <img src={`/api/photos/${data.photoId}`} alt='Rider' />
+            <img src={`https://race-form.onrender.com/api/photos/${data.photoId}`} alt='Rider' />
           ) : (
             <div className='admin-empty'>{status || 'No photo'}</div>
           )}
