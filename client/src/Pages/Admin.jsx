@@ -3,36 +3,36 @@ import '../App.css'
 import Nav from '../Components/Nav'
 
 export default function Admin() {
-  const [data, setData] = useState(null)
+  const [list, setList] = useState([])
   const [status, setStatus] = useState('Loading...')
   const [actionStatus, setActionStatus] = useState('')
 
-  const loadLatest = async () => {
+  const loadAll = async () => {
     try {
-      const res = await fetch('https://race-form.onrender.com/api/registrations/latest')
+      const res = await fetch('https://race-form.onrender.com/api/registrations')
       const json = await res.json()
       if (!res.ok) {
-        setData(null)
+        setList([])
         setStatus(json.message || 'No data')
         return
       }
-      setData(json.data)
+      setList(json.data || [])
       setStatus('')
     } catch (err) {
-      setData(null)
+      setList([])
       setStatus('Network error')
     }
   }
 
   useEffect(() => {
-    loadLatest()
+    loadAll()
   }, [])
 
-  const handleReject = async () => {
-    if (!data?.photoId) return
+  const handleReject = async (photoId) => {
+    if (!photoId) return
     setActionStatus('Deleting...')
     try {
-      const res = await fetch(`https://race-form.onrender.com/api/registrations/${data.photoId}`, {
+      const res = await fetch(`https://race-form.onrender.com/api/registrations/${photoId}`, {
         method: 'DELETE'
       })
       const json = await res.json()
@@ -41,7 +41,7 @@ export default function Admin() {
         return
       }
       setActionStatus('Deleted')
-      await loadLatest()
+      await loadAll()
     } catch (err) {
       setActionStatus('Network error')
     }
@@ -50,29 +50,30 @@ export default function Admin() {
   return (
     <div className='Admin'>
       <Nav />
-      <div className='admin-card'>
-        <div className='admin-photo'>
-          {data?.photoId ? (
-            <img src={`https://race-form.onrender.com/api/photos/${data.photoId}`} alt='Rider' />
-          ) : (
-            <div className='admin-empty'>{status || 'No photo'}</div>
-          )}
-        </div>
-        <div className='admin-details'>
-          <h2 className='admin-title'>Rider Details</h2>
-          {data ? (
-            <>
-              <p><span>Name:</span> {data.name}</p>
-              <p><span>Age:</span> {data.age}</p>
-              <p><span>Bike No:</span> {data.bikeNo}</p>
-            </>
-          ) : (
+      {list.length === 0 ? (
+        <div className='admin-card'>
+          <div className='admin-details'>
+            <h2 className='admin-title'>Rider Details</h2>
             <p>{status}</p>
-          )}
-          <button className='reject-btn' type='button' onClick={handleReject}>Reject</button>
-          {actionStatus && <p className='status-text'>{actionStatus}</p>}
+          </div>
         </div>
-      </div>
+      ) : (
+        list.map((item) => (
+          <div className='admin-card' key={item.photoId}>
+            <div className='admin-photo'>
+              <img src={`https://race-form.onrender.com/api/photos/${item.photoId}`} alt='Rider' />
+            </div>
+            <div className='admin-details'>
+              <h2 className='admin-title'>Rider Details</h2>
+              <p><span>Name:</span> {item.name}</p>
+              <p><span>Age:</span> {item.age}</p>
+              <p><span>Bike No:</span> {item.bikeNo}</p>
+              <button className='reject-btn' type='button' onClick={() => handleReject(item.photoId)}>Reject</button>
+              {actionStatus && <p className='status-text'>{actionStatus}</p>}
+            </div>
+          </div>
+        ))
+      )}
     </div>
   )
 }

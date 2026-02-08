@@ -99,6 +99,29 @@ app.get('/api/registrations/latest', async (req, res) => {
   }
 })
 
+app.get('/api/registrations', async (req, res) => {
+  try {
+    await connectDb()
+    const files = await db
+      .collection('photos.files')
+      .find()
+      .sort({ uploadDate: -1 })
+      .limit(50)
+      .toArray()
+
+    const data = files.map((file) => ({
+      name: file.metadata?.name || '',
+      age: file.metadata?.age || '',
+      bikeNo: file.metadata?.bikeNo || '',
+      photoId: file._id
+    }))
+
+    res.json({ data })
+  } catch (err) {
+    res.status(500).json({ message: 'Server error.' })
+  }
+})
+
 app.delete('/api/registrations/:id', async (req, res) => {
   try {
     await connectDb()
