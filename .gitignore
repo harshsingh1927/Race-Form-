@@ -1,0 +1,8 @@
+**/node_modules/
+backend/.env
+.env
+*.log
+*.pid
+*.seed
+*.pid.lock
+.DS_Store
