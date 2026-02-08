@@ -1,0 +1,323 @@
+.Navbar{
+  
+  background-color: black;
+  opacity: 70%;
+  width: 70vw;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  justify-content: space-between;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-left: 10vw;
+  justify-self: center;
+  height: 10vh;
+  margin-top: -10px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 60px green;
+  z-index: 10;
+  top: 5vh;
+  color: beige;
+  
+  
+}
+
+.Home{
+  position: relative;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+   background-image: url('./Assets/Home-bike1.avif');
+  background-size: cover;
+}
+
+ 
+.title{
+  font-weight: 800;
+  font-size: xx-large;
+  display: inline-block;
+  margin-top: 10px; /* value badha/ghata sakte ho */
+}
+
+.nav-link{
+  color: beige;
+  text-decoration: none;
+}
+
+.nav-link:hover{
+  color: white;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+
+
+.nav-item{
+  cursor: pointer;
+  text-align: right;
+  margin-left: auto;
+  margin-right: 50px;
+}
+
+.nav-item:hover{
+  transform: translateY(-1px);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.nav-menu{
+  display: none;
+  margin-right: 30px;
+  background: transparent;
+  border: none;
+  color: beige;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.nav-menu:hover{
+  color: white;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.nav-dropdown{
+  position: absolute;
+  right: 24px;
+  top: 9vh;
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 10px;
+  padding: 10px 14px;
+  box-shadow: 6px 6px 30px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px){
+  .nav-item{
+    display: none;
+  }
+  .nav-menu{
+    display: inline-flex;
+    margin-left: auto;
+  }
+}
+
+
+
+.join-race{
+ background-color: rgb(237, 53, 53);
+  position: fixed;
+ padding: 10px;
+ margin: center;
+ justify-self: center;
+ left: 45vw;
+ top: 70vh;
+ opacity: 70%;
+ border-radius: 10px;
+ padding-left: 30px;
+ padding-right: 30px;
+ font-weight: 600;
+ color: beige;
+ box-shadow: 10px 10px 50px red;
+ z-index: 5;
+ animation: 2s ease-in-out butn;
+}
+
+.join-race:hover{
+ transform:scale(1.3);
+ background-color: red;
+ opacity: 100%;
+ font-size: 1.5rem;
+ color: aqua;
+}
+
+.map-img{
+ z-index: 4;
+  position: absolute;
+
+ right: 10vw;
+ top: 20vh;
+ opacity: 90%;
+ 
+ 
+}
+
+.Form{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box-form{
+  margin-top: 18vh;
+  width: min(520px, 90vw);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+  background-color: black;
+  opacity: 70%;
+  border-radius: 18px;
+  box-shadow: 10px 10px 60px green;
+}
+
+.input-box{
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: beige;
+  outline: none;
+}
+
+.input-box::placeholder{
+  color: rgba(245, 245, 220, 0.7);
+}
+
+.submit-btn{
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(237, 53, 53);
+  color: beige;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 10px 10px 50px red;
+}
+
+.submit-btn:hover{
+  transform: scale(1.03);
+  background-color: red;
+  opacity: 100%;
+}
+
+.status-text{
+  color: beige;
+  margin: 6px 0 0;
+}
+
+.quote-wrap{
+  position: absolute;
+  left: 8vw;
+  top: 28vh;
+  max-width: 40vw;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 14px 18px;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 6px 6px 30px rgba(0, 0, 0, 0.4);
+}
+
+.quote-text{
+  margin: 0;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+}
+
+.quote-cursor{
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink{
+  50% { opacity: 0; }
+}
+
+.about-text{
+  color: white;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.Admin{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.admin-card{
+  margin-top: 18vh;
+  width: min(820px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  padding: 24px;
+  background-color: black;
+  opacity: 70%;
+  border-radius: 18px;
+  box-shadow: 10px 10px 60px green;
+}
+
+.admin-photo{
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-photo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.admin-empty{
+  color: beige;
+  padding: 16px;
+}
+
+.admin-details{
+  color: beige;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-title{
+  margin: 0 0 6px 0;
+}
+
+.admin-details span{
+  font-weight: 700;
+}
+
+.reject-btn{
+  margin-top: 10px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(237, 53, 53);
+  color: beige;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 10px 10px 50px red;
+}
+
+.reject-btn:hover{
+  transform: scale(1.03);
+  background-color: red;
+  opacity: 100%;
+}
+
+@media (max-width: 720px){
+  .admin-card{
+    grid-template-columns: 1fr;
+  }
+}
+
+.Gif{
+  position: absolute;
+  height: 40vh;
+  width: 100vw;
+  bottom: -30vh;
+  
+}
+
+.Form{
+  background: linear-gradient(rgb(16, 41, 22), rgb(22, 22, 22));
+  width: 100vw;
+  height: 100vh;
+}
