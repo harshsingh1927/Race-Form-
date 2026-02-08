@@ -5,6 +5,7 @@ import Home from './Pages/Home.jsx';
 import Form from './Pages/Form';
 import Admin from './Pages/Admin';
 import About from './Pages/About';
+import Authenticate from './Pages/Authenticate';
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/form" element={<Form />} />
+        <Route path="/auth" element={<Authenticate />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<Home />} />

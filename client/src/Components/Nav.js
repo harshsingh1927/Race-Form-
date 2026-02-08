@@ -9,6 +9,7 @@ export default function Nav() {
     <div className='Navbar'>
       <Link className='nav-link' to='/'><span className='title'>Race Form Page</span></Link>
       <Link className='nav-link nav-item' to='/about'>About</Link>
+      <Link className='nav-link nav-item nav-admin' to='/auth'>Admin</Link>
       <button
         className='nav-menu'
         type='button'
